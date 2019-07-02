@@ -14,20 +14,39 @@
 Write code that prints out all the numbers from 1 to 10 as a single string.
 (Hint: the `String()` function can convert an Int to a String)
 
+for i in 1...10 {
+print(String(i), terminator: " ")
+}
+
 ***
 ## Question 2
 
 Write code that prints out all the even numbers from 5 to 51 as a single string.
+
+for i in 5...51 where i % 2 == 0 {
+print(String(i), terminator: " ")
+}
+
 
 ***
 ## Question 3
 
 Write code that prints out every number ending in 4 between 1 and 60 as a single string.
 
+for i in 1...60 where i % 10 == 4 {
+print(String(i), terminator: " ")
+}
+
 ***
 ## Question 4
 
 Print each character in the string `"Hello world!"`
+
+var greeting = "Hello world!"
+
+for i in greeting {
+print(i)
+}
 
 ***
 ## Question 5
@@ -35,6 +54,12 @@ Print each character in the string `"Hello world!"`
 Print out the last character in the string below.  You cannot use the Character literal "!" (i.e you must access `myStringSeven`'s characters).
 
 `let myStringSeven = "Hello world!"`
+
+let myStringSeven = "Hello world!"
+let myStringSevenEnd = myStringSeven.endIndex
+let lastCharIndex = myStringSeven.index(before: myStringSevenEnd)
+let lastChar = myStringSeven[lastCharIndex]
+print(lastChar)
 
 ***
 ## Question 6
@@ -48,25 +73,59 @@ Write code that switches on a string, given the following conditions:
 
 Initialize a String with a character. Show that it is a Character, and not another String, that you're using to initialize it.
 
+let initChar: Character = "a"
+
 ***
 ## Question 8
 
 Build five pairs of **canonically equivalent** strings, the first of each being a pre-composed character and the second being one that uses combinable unicode scalars. Show that they are equivalent.
+
+let eAccent = "\u{0065}\u{0301}"
+let eAccentReal = "\u{00E9}"
+eAccent.count
+eAccentReal.count
+
+let nTilde = "\u{006E}\u{0303}"
+let nTildeReal = "\u{00F1}"
+nTilde.count
+nTildeReal.count
+
+let oDiacrit = "\u{006F}\u{0308}"
+let oDiacritReal = "\u{00f6}"
+oDiacrit.count
+oDiacritReal.count
+
+let aAccent = "\u{0061}\u{0301}"
+let aAccentReal = "\u{00e1}"
+aAccent.count
+aAccentReal.count
+
+let aDiar = "\u{0061}\u{0308}"
+let aDiarReal = "\u{00e4}"
+aDiar.count
+aDiarReal.count
 
 ***
 ## Question 9
 
 **Using only Unicode**, print out `"HELLO WORLD!"`
 
+let helloWorld = "\u{0048}\u{0045}\u{004C}\u{004C}\u{004F}\u{0020}\u{0057}\u{004F}\u{0052}\u{004C}\u{0044}\u{0021}"
+
+
 ***
 ## Question 10
 
 **Using only Unicode**, print out your name.
 
+let levi = "\u{004C}\u{0065}\u{0076}\u{0069}"
+
 ***
 ## Question 11
 
 **Using only Unicode**, print out `"HELLO WORLD!"` in another language.
+
+let helloWorldL = "\u{00A1}\u{0048}\u{004F}\u{004C}\u{004C}\u{0041}\u{0020}\u{0045}\u{004C}\u{0020}\u{004D}\u{0055}\u{004E}\u{0044}\u{004F}\u{0021}"
 
 ***
 ## Question 12
@@ -90,6 +149,13 @@ Flower Box:
 | ⚘ | ⚘ | ⚘ | ⚘ | ⚘ |
 - - - - - - - - - - -
 ```
+
+for _ in 1...7 {
+for _ in 1...5 {
+print("\u{2698}", terminator: " ")
+}
+print("")
+}
 
 ***
 ## Question 13
@@ -116,6 +182,11 @@ You are given a string stored in the variable `aString`. Create new string named
 ```swift
 var aString = "Replace the letter e with \*"
 // Your code here
+
+var aString = "Replace the letter e with *"
+var replacedString = aString.replacingOccurrences(of: "e", with: "*")
+
+print(replacedString)
  ```
 
 Example:
@@ -136,6 +207,11 @@ var aString = "this string has 29 characters"
 var reverse = ""
 
 // Your code here
+
+var aString = "this string has 29 characters"
+var reverse = String(aString.reversed())
+print(reverse)
+
 ```
 
 Example:
@@ -144,6 +220,10 @@ Input:
 
 Output:
 `"olleH"`
+
+var aString = "Hello"
+var reverse = String(aString.reversed())
+print(reverse)
 
 ***
 ## Question 16
@@ -154,6 +234,13 @@ You are given a string stored in variable `aString`. Print `true` if `aString` i
 let aString = "anutforajaroftuna"
 
 // Your code here
+
+let aString = "anutforajaroftuna"
+let aStringReverse = String(aString.reversed())
+aString == aStringReverse
+print(aString == aStringReverse)
+
+
 ```
 
 Example 1:
@@ -170,6 +257,12 @@ Input:
 Output:
 `false`
 
+let aString = "Hello"
+let aStringReverse = String(aString.reversed())
+aString == aStringReverse
+print(aString == aStringReverse)
+
+
 ***
 ## Question 17
 
@@ -179,6 +272,13 @@ You are given a string stored in variable `problem`. Write code so that you prin
 var problem = "split this string into words and print them on separate lines"
 
 // Your code
+
+var problem = "split this string into words and print them on separate lines"
+var problemSplit = problem.components(separatedBy: " ")
+for i in problemSplit {
+print(i)
+}
+
 ```
 
 Example:
@@ -209,6 +309,14 @@ You are given a string stored in variable `problem`. Write code that prints the 
 var problem = "find the longest word in the problem description"
 
 // Your code here
+
+var problem = "find the longest word in the problem description"
+var problemArray = problem.components(separatedBy: " ")
+
+if let max = problemArray.max(by: {$1.count > $0.count}) {
+print(max)
+}
+
 ```
 
 Example:
