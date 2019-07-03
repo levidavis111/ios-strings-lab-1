@@ -68,6 +68,26 @@ Write code that switches on a string, given the following conditions:
 - If the string's length is even, print out every character.
 - If the string's length is odd, print out every other character.
 
+let greeting = "Hello World!!"
+var endResult = ""
+var counter = 0
+var lenghtOfStatement = greeting.count
+var oddOrEven = lenghtOfStatement % 2
+
+switch oddOrEven {
+case 0:
+print(greeting)
+default:
+for i in greeting {
+counter += 1
+if counter % 2 != 0 {
+endResult = endResult + "\(i)"
+}
+}
+print(endResult)
+}
+
+
 ***
 ## Question 7
 
@@ -150,11 +170,21 @@ Flower Box:
 - - - - - - - - - - -
 ```
 
-for _ in 1...7 {
-for _ in 1...5 {
-print("\u{2698}", terminator: " ")
+var flower = "\u{2698}"
+var verticalSymbol = "\u{007c}"
+var horizontalSymbol = "\u{005f}"
+
+for _ in 1...11 {
+print(horizontalSymbol, terminator: " ")
 }
 print("")
+
+for _ in 1...7 {
+print("\(verticalSymbol) \(flower) \(verticalSymbol) \(flower) \(verticalSymbol) \(flower) \(verticalSymbol) \(flower) \(verticalSymbol) \(flower) \(verticalSymbol)")
+}
+
+for _ in 1...11 {
+print(horizontalSymbol, terminator: " ")
 }
 
 ***
@@ -173,6 +203,23 @@ Chess Board:
 ♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
 ♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
 ```
+
+print("\u{2656} \u{2658} \u{2657} \u{2655} \u{2654} \u{2657} \u{2658} \u{2656}")
+
+for _ in 1...8 {
+print("\u{2659}", terminator: " ")
+}
+print("")
+print("")
+print("")
+print("")
+
+for _ in 1...8 {
+print("\u{265F}", terminator: " ")
+}
+print("")
+
+print("\u{265C} \u{265E} \u{265D} \u{265B} \u{265A} \u{265D} \u{265E} \u{265C}")
 
 ***
 ## Question 14
@@ -337,6 +384,22 @@ Given a string in English, create a tuple containing the number of vowels and co
 let vowels = "aeiou"
 let consonants = "bcdfghjklmnpqrstvwxyz"
 let input = "Count how many vowels I have!"
+
+let vowels = "aeiou"
+let consonants = "bcdfghjklmnpqrstvwxyz"
+let input = "Count how many vowels I have!"
+var vowelCount = 0
+var consonantCount = 0
+
+
+for i in input.lowercased() {
+if vowels.contains(i) {
+vowelCount += 1
+} else if consonants.contains(i){
+consonantCount += 1
+}
+}
+print((vowel: vowelCount, consonant: consonantCount))
 ```
 
 ***
@@ -350,5 +413,17 @@ Example:
 Input: `"How are you doing this Monday?"`
 
 Output: `7`
+
+let input = "How are you doing this Monday"
+let inputComponents = input.components(separatedBy: " ")
+let lastComponent = inputComponents.last!
+let count = lastComponent.count
+
+if count > 0 {
+print(lastComponent.count)
+}
+else {
+print("There is no last word")
+}
 
 ***
